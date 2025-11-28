@@ -1,0 +1,20 @@
+<header th:fragment="menu">
+    <nav>
+        <ul class="main-menu">
+            <li><a th:href="@{/}">홈</a></li>
+
+            <li th:unless="${session.loginID}">
+                <a th:href="@{/input}">회원가입</a>
+            </li>
+            <li th:unless="${session.loginID}">
+                <a th:href="@{/login}">로그인</a>
+            </li>
+
+            <li th:if="${session.loginID}">
+                <a th:href="@{/logout}">로그아웃</a>
+            </li>
+
+            <li><a th:href="@{/userlist}">회원목록</a></li>
+        </ul>
+    </nav>
+</header>

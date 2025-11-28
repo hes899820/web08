@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body>
+
+<div th:replace="fragments/header :: menu"></div>
+
+<hr>
+
+<h1>
+    <span th:if="${session.loginID} != null" th:text="${session.loginID} + '님,'"></span>
+    홈페이지에 오신 것을 환영합니다
+</h1>
+
+</body>
+</html>

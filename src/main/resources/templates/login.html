@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+
+<div th:replace="fragments/header :: menu"></div>
+
+<hr>
+
+<form th:action="@{/login}" method="post" id="loginForm">
+
+    <h3>로그인</h3>
+
+    <fieldset>
+        <label for="id">아이디</label>
+        <input type="text" id="id" name="id" placeholder="아이디" required>
+    </fieldset>
+
+    <fieldset>
+        <label for="password">비밀번호</label>
+        <input type="password" id="password" name="password" placeholder="비밀번호" required>
+    </fieldset>
+
+    <div style="margin-bottom: 20px; text-align: left;">
+        <input type="checkbox" id="remember-id" name="remember-id">
+        <label for="remember-id" style="font-size: 14px;">ID 기억하기</label>
+    </div>
+
+
+    <p th:if="${error}" style="color: #dc3545; text-align: center; margin-bottom: 15px;" th:text="${error}"></p>
+    <fieldset class="login-submit">
+        <button type="submit" id="submitBtn">로그인</button>
+    </fieldset>
+
+</form>
+
+<script>
+    // // 저장 key / value
+    // localStorage.setItem("user-id", "실제 유저아이디");
+    //
+    // // 가져오기  없으면 null  / 있으면 값
+    // localStorage.getItem("user-id");
+    //
+    // // 삭제
+    // localStorage.removeItem("user-id");
+
+    // 조금 더안전한 방법 (이 페이지에 들어온 순간 초기 세팅 )
+    // 이게 의미하는 것 : 서버에서 던저주는 순서를 꼬이지 않게 기본적인 자바가 끝나고 호출되는 것
+    document.addEventListener('DOMContentLoaded', () => {
+        // 이 화면에 들어왔을때
+        const userId = localStorage.getItem('user-id');
+        console.log(userId)
+        if (userId != null ){
+            // ID  쪽에 저 값을 넣어준다
+            document.getElementById("id").value = userId;
+            console.log(document.getElementById("id").value)
+        }
+
+    })
+
+
+
+
+
+    // 로그인버튼
+    document.getElementById('submitBtn').addEventListener('click', (event) => {
+        event.preventDefault();     // 이벤트 진행을막는다.  서버로 안던져
+
+        // 체크박스 여부 체크해서 로컬스토리지
+        const checkbox = document.getElementById('remember-id');
+
+        // 2. checked 속성을 체크합니다.
+        const is_checked = checkbox.checked;
+
+        if(is_checked){
+            const idElement = document.getElementById("id");
+
+            localStorage.setItem("user-id", idElement.value);
+        }
+
+        // 폼을 태그로 가져와
+        const formTag = document.getElementById('loginForm');
+        formTag.submit();
+
+    })
+
+</script>
+
+</body>
+</html>

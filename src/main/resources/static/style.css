@@ -1,0 +1,244 @@
+/*
+ * 기본 스타일 초기화 및 전체 레이아웃 설정
+ */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6; /* 밝은 회색 배경 */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex; /* 중앙 정렬을 위해 flex 사용 */
+    flex-direction: column;
+    align-items: center; /* 수평 중앙 정렬 */
+    min-height: 100vh; /* 뷰포트 전체 높이 사용 */
+}
+
+/* 폼 영역 전체를 감싸는 컨테이너 스타일 */
+form {
+    background-color: #ffffff; /* 폼 배경은 흰색 */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* 은은한 그림자 */
+    width: 100%;
+    max-width: 400px; /* 최대 폭 설정 */
+    margin-top: 50px; /* 상단 여백 */
+}
+
+/* 제목 스타일 */
+h3 {
+    text-align: center;
+    color: #007bff; /* 파란색 강조 */
+    margin-bottom: 30px;
+}
+
+/* 필드셋(입력 그룹) 스타일 */
+fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+/* 입력 필드 (input) 스타일 */
+input[type="text"],
+input[type="password"],
+input[type="tel"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* 패딩이 너비에 포함되도록 설정 */
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* 메시지 (성공/실패) 스타일 */
+.success-message {
+    color: #28a745; /* 녹색 */
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+.failure-message,
+.failure-message2,
+.strongPassword-message,
+.mismatch-message {
+    color: #dc3545; /* 빨간색 */
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    padding-left: 5px;
+}
+
+/* hide 클래스가 적용되면 숨김 */
+.hide {
+    display: none !important;
+}
+
+/* 버튼 스타일 */
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+/* 버튼 비활성화 상태 스타일 */
+button[type="submit"]:disabled {
+    background-color: #a0c9f5; /* 비활성화 시 연한 파란색 */
+    cursor: not-allowed;
+}
+
+
+/*
+ * 헤더 메뉴 스타일 (navigation)
+ */
+
+header {
+    width: 100%;
+    background-color: #333; /* 어두운 배경 */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 0;
+}
+
+nav {
+    max-width: 800px; /* 폼과 동일한 최대 너비 (선택 사항) */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+
+.main-menu {
+    list-style: none; /* 목록 마커 제거 */
+    padding: 0;
+    margin: 0;
+    display: flex; /* 가로 배열 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+}
+
+.main-menu li {
+    padding: 0;
+}
+
+.main-menu a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none; /* 기본 상태에서는 밑줄 제거 */
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s, text-decoration 0.3s; /* 밑줄 효과에도 애니메이션 추가 */
+}
+
+.main-menu a:hover {
+    background-color: #007bff; /* 호버 시 파란색 배경 (기존) */
+    text-decoration: underline; /* 💡 마우스 오버 시 밑줄 추가! */
+    text-decoration-thickness: 2px; /* (선택 사항) 밑줄 두께 지정 */
+    text-underline-offset: 4px; /* (선택 사항) 텍스트와 밑줄 사이 간격 지정 */
+}
+
+/*
+ * 테이블 및 목록 스타일
+ */
+
+.table-container {
+    width: 100%;
+    max-width: 800px; /* 테이블 최대 너비 설정 */
+    margin: 20px auto; /* 중앙 정렬 */
+}
+
+.user-list-table {
+    width: 100%;
+    border-collapse: collapse; /* 이중 테두리 제거 */
+    margin-top: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-radius: 8px; /* 모서리 둥글게 */
+    overflow: hidden; /* 모서리 둥글게 처리된 부분의 내용이 넘치지 않도록 */
+}
+
+.user-list-table th,
+.user-list-table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: center;
+}
+
+/* 테이블 헤더 스타일 */
+.user-list-table thead th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+/* 테이블 행 호버 효과 */
+.user-list-table tbody tr:hover {
+    background-color: #f5f9ff; /* 마우스 오버 시 연한 파란색 */
+    cursor: pointer;
+}
+
+/* 목록 없음 / 오류 메시지 스타일 */
+.no-data-message,
+.error-message-box {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 20px auto;
+    font-size: 16px;
+    color: #555;
+}
+
+.error-message-box {
+    border: 1px solid #dc3545;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 30px;
+}
+/* 목록 없음 / 오류 메시지 스타일 */
+.no-data-message,
+.error-message-box {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 20px auto;
+    font-size: 16px;
+    color: #555;
+}
+
+.error-message-box {
+    border: 1px solid #dc3545;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 30px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: menu"></div>
+<hr>
+
+<h2>회원 목록</h2>
+
+<div th:unless="${session.loginID}">
+    <p class="error-message-box">⚠️ **로그인 후 접근 가능합니다.**</p>
+
+</div>
+
+<div th:if="${session.loginID}" class="table-container">
+
+    <div th:if="${list == null or list.isEmpty()}" class="no-data-message">
+        <p>조회 결과가 없습니다.</p>
+    </div>
+
+    <table th:if="${list != null and not list.isEmpty()}" class="user-list-table">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>아이디</th>
+            <th>비밀번호</th>
+            <th>이름</th>
+            <th>휴대폰</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user, status : ${list}">
+            <td th:text="${status.count}"></td>
+
+            <td th:text="${user.id}"></td>
+
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.phone}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
